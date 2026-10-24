@@ -2,7 +2,7 @@
 
 Code for **BMVC+: An Enhanced Block Modulation Video Compression Codec for Large-scale Image Compression**, accepted by **IEEE Journal of Selected Topics in Signal Processing (JSTSP), 2025**.
 
-BMVC+ studies block-modulation-based compression and reconstruction of large-scale images. This repository contains reconstruction networks, training and evaluation scripts, and example test images. The current evaluation entry point uses the Mamba-based `DualBMVC` network.
+BMVC+ studies block-modulation-based compression and reconstruction of large-scale images. 
 
 ## Repository Structure
 
@@ -19,11 +19,10 @@ BMVC-plus/
 `-- utils.py                  # Data loading, metrics, and checkpoint utilities
 ```
 
-Generated logs, reconstruction results, and model checkpoints are not included in this release.
 
 ## Environment
 
-The implementation targets **Linux with an NVIDIA GPU and CUDA**. The bundled Mamba code requires compiled CUDA extensions; copying the Python modules alone is not sufficient. CPU-only and macOS execution are not supported by the current CUDA-dependent implementation.
+The implementation targets **Linux with an NVIDIA GPU and CUDA**. The bundled Mamba code requires compiled CUDA extensions; copying the Python modules alone is not sufficient. 
 
 Create an isolated Python environment, then install a CUDA-enabled PyTorch build compatible with your GPU driver and CUDA toolkit. A starting setup is:
 
@@ -63,11 +62,8 @@ python test.py \
 
 The script reports per-image and mean **PSNR** and **SSIM** on the luminance channel. Side-by-side ground-truth and reconstructed images are saved under `test_results/<decoder_type>/MCA_100/test/`, and logs under `test_results/log/`.
 
-The model configuration must match the checkpoint. Defaults in `opts.py` include an image size of `1080 x 1920`, block factors `cr=[4, 8]`, measurement size `[272, 240]`, three reconstruction stages, and 128 channels. The list-valued arguments in the current parser should be edited directly in `opts.py`; they are not configured to accept multiple command-line values. Replace the original machine-specific paths when using your own data.
 
 ## Training
-
-**Current release note:** `train.py` imports `DualBMVC` from `model.network_4S_mamba`, which is not included in this repository. Before training, restore the intended module or, after confirming the intended architecture, change that import to the provided `model.Network_Mamba`. The command below assumes this import has been resolved.
 
 ```bash
 python train.py \
@@ -80,8 +76,4 @@ python train.py \
   --device cuda
 ```
 
-For training from scratch, set `pretrained_model_path` to Python `None` in `opts.py`; the string `"None"` passed on the command line is not equivalent. Training creates `log/`, `results/`, and `weights/` locally. Training and evaluation have not been validated as part of this repository upload.
 
-## Acknowledgments
-
-This implementation uses PyTorch, Mamba, timm, and other open-source scientific computing libraries. Please retain and follow the applicable upstream license notices when reusing bundled components.
