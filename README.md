@@ -75,5 +75,19 @@ python train.py \
   --epochs 2000 \
   --device cuda
 ```
+## Citation
 
+```bibtex
+@article{BMVC2025Qu,
+  author={Qu, Gang and Zheng, Siming and Qin, Mengjie and Yuan, Xin},
+  journal={IEEE Journal of Selected Topics in Signal Processing}, 
+  title={BMVC$+$: An Enhanced Block Modulation Video Compression Codec for Large-Scale Image Compression}, 
+  year={2025},
+  volume={19},
+  number={8},
+  pages={1943-1954},
+  keywords={Image coding;Image reconstruction;Decoding;Transformers;Complexity theory;Mathematical models;Imaging;Recurrent neural networks;Visualization;Video compression;Large-scale image compression;BMVC  $+$   encoder and decoder;resource-limited platforms},
+  doi={10.1109/JSTSP.2025.3634288}}
+
+```
 
